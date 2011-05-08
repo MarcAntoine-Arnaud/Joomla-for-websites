@@ -29,7 +29,7 @@ include_once (dirname(__FILE__).DS.'/ja_vars.php');
 <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/template.css" type="text/css" />
 
 <script language="javascript" type="text/javascript" src="<?php echo $tmpTools->templateurl(); ?>/js/ja.script.js"></script>
-<script type="text/javascript" src="<?php echo $tmpTools->templateurl(); ?>/js/jquery.min.js"></script>
+
 <?php if ($tmpTools->getParam('rightCollapsible')): ?>
 <script language="javascript" type="text/javascript">
 var rightCollapseDefault='<?php echo $tmpTools->getParam('rightCollapseDefault'); ?>';
@@ -95,39 +95,8 @@ function makeTransBG() {
 #ja-wrapper {min-width: <?php echo $tmpWrapMin; ?>;}
 </style>
 </head>
+
 <body id="bd" class="fs<?php echo $tmpTools->getParam(JA_TOOL_FONT);?> <?php echo $tmpTools->browser();?>" >
-		<?php
-			$siteName = $tmpTools->sitename();
-			if ($tmpTools->getParam('logoType')=='image'):
-			$logoImage = "images/".$tmpTools->getParam('logoImage'); ?>
-			<h1 class="logo">
-				<a href="index.php" title="<?php echo $siteName; ?>"><img src="<?php echo $logoImage; ?>" alt="<?php echo $siteName; ?>" ><span><?php echo $siteName; ?></span></a>
-			</h1>
-		<?php else:
-			$logoText = (trim($tmpTools->getParam('logoText'))=='') ? $config->sitename : $tmpTools->getParam('logoText');
-			$sloganText = (trim($tmpTools->getParam('sloganText'))=='') ? JText::_('SITE SLOGAN') : $tmpTools->getParam('sloganText');	?>
-			<h1 class="logo-text">
-				<a href="index.php" title="<?php echo $siteName; ?>"><span><?php echo $logoText; ?></span></a>
-			</h1>
-			<p class="site-slogan"><?php echo $sloganText;?></p>
-		<?php endif;
-		$topleftImage = "images/".$tmpTools->getParam('topleftpicture');
-		$toprightImage = "images/".$tmpTools->getParam('toprightpicture');
-		$bottomleftImage = "images/".$tmpTools->getParam('bottomleftpicture');
-		$bottomrightImage = "images/".$tmpTools->getParam('bottomrightpicture');?>		
-		?>
-		<div id="top-left-box" class="top-left-box">
-			<img src="<?php echo $topleftImage ?>">
-		</div>
-		<div id="top-right-box" class="top-right-box">
-			<img src="<?php echo $toprightImage ?>">
-		</div>
-		<div id="bottom-left-box" class="bottom-left-box">
-			<img src="<?php echo $bottomleftImage ?>">
-		</div>
-		<div id="bottom-right-box" class="bottom-right-box">
-			<img src="<?php echo $bottomrightImage ?>">
-		</div>
 <a name="Top" id="Top"></a>
 <ul class="accessibility">
 	<li><a href="#ja-content" title="<?php echo JText::_("Skip to content");?>"><?php echo JText::_("Skip to content");?></a></li>
@@ -138,61 +107,15 @@ function makeTransBG() {
 
 <div id="ja-wrapper">
 
-<!-- BEGIN: HEADER -->
-<!--
-<div id="ja-headerwrap">
-	<div id="ja-header" class="clearfix" style="background: url(<?php echo $tmpTools->templateurl(); ?>/images/header/<?php echo $tmpTools->getRandomImage(dirname(__FILE__).DS.'images/header'); ?>) no-repeat top <?php if($this->direction == 'rtl') echo 'left'; else echo 'right';?>;">
 
-	<div class="ja-headermask">&nbsp;</div>
-
-	<?php
-		$siteName = $tmpTools->sitename();
-		if ($tmpTools->getParam('logoType')=='image'): ?>
-		<h1 class="logo">
-			<a href="index.php" title="<?php echo $siteName; ?>"><span><?php echo $siteName; ?></span></a>
-		</h1>
-	<?php else:
-		$logoText = (trim($tmpTools->getParam('logoText'))=='') ? $config->sitename : $tmpTools->getParam('logoText');
-		$sloganText = (trim($tmpTools->getParam('sloganText'))=='') ? JText::_('SITE SLOGAN') : $tmpTools->getParam('sloganText');	?>
-		<h1 class="logo-text">
-			<a href="index.php" title="<?php echo $siteName; ?>"><span><?php echo $logoText; ?></span></a>
-		</h1>
-		<p class="site-slogan"><?php echo $sloganText;?></p>
-	<?php endif; ?>
-
-	<?php $tmpTools->genToolMenu(JA_TOOL_FONT, 'png'); ?>
-
-	<?php if($this->countModules('user4')) : ?>
-		<div id="ja-search">
-			<jdoc:include type="modules" name="user4" />
-		</div>
-	<?php endif; ?>
-
-	</div>
-</div>-->
-<!-- END: HEADER -->
-
-<!-- BEGIN: MAIN NAVIGATION -->
-<!--
-<?php if ($this->countModules('hornav')): ?>
-<div id="ja-mainnavwrap">
-	<div id="ja-mainnav" class="clearfix">
-	<jdoc:include type="modules" name="hornav" />
-	</div>
-</div>
-<?php endif; ?>
--->
-<!-- END: MAIN NAVIGATION -->
-<!--
 <div id="ja-containerwrap<?php echo $divid; ?>">
 <div id="ja-containerwrap2">
 	<div id="ja-container">
 	<div id="ja-container2" class="clearfix">
 
 		<div id="ja-mainbody<?php echo $divid; ?>" class="clearfix">
--->
+
 		<!-- BEGIN: CONTENT -->
-		<!--
 		<div id="ja-contentwrap">
 		<div id="ja-content">
 
@@ -213,40 +136,38 @@ function makeTransBG() {
 			<?php endif; ?>
 
 		</div>
-		</div>-->
+		</div>
 		<!-- END: CONTENT -->
 
-		<!--<?php if ($this->countModules('left')): ?>-->
+		<?php if ($this->countModules('left')): ?>
 		<!-- BEGIN: LEFT COLUMN -->
-		<!--<div id="ja-col1">
+		<div id="ja-col1">
 			<jdoc:include type="modules" name="left" style="xhtml" />
-		</div><br />-->
+		</div><br />
 		<!-- END: LEFT COLUMN -->
-		<!--<?php endif; ?>
+		<?php endif; ?>
 
 		</div>
 
-		<?php if ($this->countModules('right')): ?>-->
+		<?php if ($this->countModules('right')): ?>
 		<!-- BEGIN: RIGHT COLUMN -->
-		<!--<div id="ja-col2">
+		<div id="ja-col2">
 			<jdoc:include type="modules" name="right" style="jarounded" />
-		</div><br />-->
+		</div><br />
 		<!-- END: RIGHT COLUMN -->
-		<!--<?php endif; ?>
+		<?php endif; ?>
 
 	</div>
 	</div>
 </div>
-</div>-->
+</div>
 
 <?php
 $spotlight = array ('user1','user2','top','user5');
 $botsl = $tmpTools->calSpotlight ($spotlight,99,22);
 if( $botsl ) :
 ?>
-
 <!-- BEGIN: BOTTOM SPOTLIGHT -->
-<!--
 <div id="ja-botslwrap">
 	<div id="ja-botsl" class="clearfix">
 
@@ -276,36 +197,8 @@ if( $botsl ) :
 
 	</div>
 </div>
--->
 <!-- END: BOTTOM SPOTLIGHT -->
 <?php endif; ?>
-
-<!-- BEGIN: FOOTER
-<div id="ja-footerwrap">-->
-<div id="ja-footer" class="clearfix">
-
-	<div id="ja-footnav">
-		<jdoc:include type="modules" name="user3" />
-	</div>
-
-	<div class="copyright">
-		<jdoc:include type="modules" name="footer" />
-	</div>
-
-	<div class="ja-cert">
-		<jdoc:include type="modules" name="syndicate" />
-    <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank" title="<?php echo JText::_("CSS Validity");?>" style="text-decoration: none;">
-		<img src="<?php echo $tmpTools->templateurl(); ?>/images/but-css.gif" border="none" alt="<?php echo JText::_("CSS Validity");?>" />
-		</a>
-		<a href="http://validator.w3.org/check/referer" target="_blank" title="<?php echo JText::_("XHTML Validity");?>" style="text-decoration: none;">
-		<img src="<?php echo $tmpTools->templateurl(); ?>/images/but-xhtml10.gif" border="none" alt="<?php echo JText::_("XHTML Validity");?>" />
-		</a>
-	</div>
-
-	<br />
-</div>
-<!-- </div>
-<!-- END: FOOTER -->
 
 </div>
 

@@ -130,7 +130,7 @@ class JSite extends JApplication
 	*
 	* @access public
 	*/
-	function render()
+	function render($getOnlyContent=false)
 	{
 		$document =& JFactory::getDocument();
 		$user     =& JFactory::getUser();
@@ -149,8 +149,14 @@ class JSite extends JApplication
 			default     :
 			{
 				$template	= $this->getTemplate();
-				$file 		= JRequest::getCmd('tmpl', 'index');
-
+				if($getOnlyContent==false)
+				{
+					$file		= JRequest::getCmd('tmpl', 'index');
+				}
+				else
+				{
+					$file		= JRequest::getCmd('tmpl', 'getcontent');
+				}
 				if ($this->getCfg('offline') && $user->get('gid') < '23' ) {
 					$file = 'offline';
 				}
